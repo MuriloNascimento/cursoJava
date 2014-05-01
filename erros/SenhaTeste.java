@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class SenhaTeste {
 	
-	private static final String senha = null;
 	static Scanner s = new Scanner(System.in);
 	
 	static void autenticar(String senha) throws SenhaInvalidaException {
