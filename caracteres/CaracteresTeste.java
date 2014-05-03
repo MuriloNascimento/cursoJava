@@ -48,6 +48,11 @@ public class CaracteresTeste {
 		
 		System.out.println(sl);
 		
+		//--------------------------------
+		
+		
+		
+		
 		
 	}
 
