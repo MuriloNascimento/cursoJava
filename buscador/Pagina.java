@@ -2,12 +2,12 @@ package buscador;
 import java.io.*;
 import java.net.URL;
 
-public class LoadPage {
+public class Pagina {
 
 	public URL url;
 	public File file;
 	
-	public LoadPage(URL url, File file){
+	public Pagina(URL url, File file){
 		this.url = url;
 		this.file = file;
 	}

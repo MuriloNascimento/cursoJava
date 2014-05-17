@@ -8,10 +8,10 @@ public class Buscador {
 
 	public static void main(String[] args) throws MalformedURLException {
 		
-		URL urlTeste = new URL("http://www.google.com.br/");
+		URL urlTeste = new URL("http://www.emailnewsletter.com.br/");
 		File fileTeste = new File("C:/Users/Murilo/Documents/javawork/cursoJava/buscador/arquivo.html");
 		
-        LoadPage novaPagina = new LoadPage(urlTeste,fileTeste);
+        Pagina novaPagina = new Pagina(urlTeste,fileTeste);
         
         try {
         	novaPagina.getPage();
