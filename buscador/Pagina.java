@@ -4,12 +4,20 @@ import java.net.URL;
 
 public class Pagina {
 
-	public URL url;
-	public File file;
+	private URL url;
+	private File file;
 	
-	public Pagina(URL url, File file){
+	public Pagina(URL url,File file){
 		this.url = url;
 		this.file = file;
+	}
+	
+	public URL getURL(){
+		return this.url;
+	}
+	
+	public File getFile(){
+		return this.file;
 	}
 	
 	public void getPage() throws IOException {
