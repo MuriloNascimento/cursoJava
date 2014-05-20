@@ -17,7 +17,7 @@ public class Busca {
 	
 	private Pagina pagina;
 	private URL url;
-	private String titulo = "<title\\>\\a\\z\\<//title\\>";
+	private String titulo = "<title>(.|\\s)+?</title>";
 	private String autor = "<meta name='author' content='\\w+'>";
 	
 	public Busca(Pagina novaPagina){

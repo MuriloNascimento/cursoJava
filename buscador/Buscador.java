@@ -10,7 +10,7 @@ public class Buscador {
 
 	public static void main(String[] args) throws IOException {
 		
-		URL urlTeste = new URL("http://www.google.com.br/");
+		URL urlTeste = new URL("http://www.sbt.com.br/");
 		File fileTeste = new File("C:/Users/Murilo/Documents/javawork/cursoJava/buscador/arquivo.html");
 		
         Pagina novaPagina = new Pagina(urlTeste,fileTeste);
