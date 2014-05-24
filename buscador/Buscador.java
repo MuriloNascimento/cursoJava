@@ -5,19 +5,25 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 
 public class Buscador {
 
 	public static void main(String[] args) throws IOException {
 		
-		URL urlTeste = new URL("http://www.sbt.com.br/");
-		File fileTeste = new File("C:/Users/Murilo/Documents/javawork/cursoJava/buscador/arquivo.html");
 		
-        Pagina novaPagina = new Pagina(urlTeste,fileTeste);
+		String urlDigitada = JOptionPane.showInputDialog("Informe a url:");
+		
+		URL urlTeste = new URL("http://"+urlDigitada);
+		
+        Pagina novaPagina = new Pagina(urlTeste);
         
         Busca b = new Busca(novaPagina);
+        String resultadoBusca = b.buscar();
+        JOptionPane.showMessageDialog(null, resultadoBusca);
         
-        b.buscar();
 	}
 
 }

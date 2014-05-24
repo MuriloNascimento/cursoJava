@@ -16,20 +16,31 @@ import java.net.URL;
 public class Busca {
 	
 	private Pagina pagina;
-	private URL url;
-	private String titulo = "<title>(.|\\s)+?</title>";
-	private String autor = "<meta name='author' content='\\w+'>";
+	private ArrayList<String> parametrosSaida = new ArrayList<> ();
+	private ArrayList<String> parametrosBusca = new ArrayList<> ();
+	
 	
 	public Busca(Pagina novaPagina){
 		this.pagina = novaPagina;
 	}
 	
-	public void buscar() throws IOException{
+	public String buscar() throws IOException{
+		
+		parametrosBusca.add("<title>(.|\\s)+?</title>");
+		parametrosBusca.add("<meta name=\"author\" content=\"(.|\\s)+?\" />");
+		parametrosBusca.add("<meta name=\"description\" content=\"(.|\\s)+?\" />");
+		
 		Matcher mat;
 		String conteudo = pagina.getPage().toString();
-		mat = Pattern.compile(titulo).matcher(conteudo);
-		while(mat.find()){
-			System.out.println(mat.group());
+		
+		for(String p : parametrosBusca){
+			mat = Pattern.compile(p).matcher(conteudo);
+			while(mat.find()){
+				parametrosSaida.add(mat.group());
+			}
 		}
+		
+		return "Link = " + pagina.getURL() + "\nTitulo = " + parametrosSaida.get(0).replaceAll("<title>", "").replaceAll("</title>", "") + "\nAutor = " + parametrosSaida.get(1).replaceAll("<meta name=\"author\" content=\"", "").replaceAll("\" />", "") + "\nDescricao = " + parametrosSaida.get(2).replaceAll("<meta name=\"description\" content=\"", "").replaceAll("\" />", "");
+		
 	}
 }
