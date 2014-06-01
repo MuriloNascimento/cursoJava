@@ -1,11 +1,18 @@
 package buscador;
 
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.regex.*;
 import java.io.*;
 
 public class Busca {
+	
+	private String link;
+	private String titulo;
+	private String autor;
+	private String data;
+	private String texto; 
 	
 	private Pagina pagina;
 	private ArrayList<String> parametrosSaida = new ArrayList<> ();
@@ -16,7 +23,7 @@ public class Busca {
 		this.pagina = novaPagina;
 	}
 	
-	public String buscar() throws IOException{
+	public String buscar() throws IOException, SQLException, NoSuchAlgorithmException, ClassNotFoundException{
 		
 		
 		parametrosBusca.add("radius fonte\">(.|\\s)+?</h2>");
@@ -35,10 +42,19 @@ public class Busca {
 			}
 		}
 		
-		return "Link = " + pagina.getURL()
-			 + "\nTitulo = " + parametrosSaida.get(0).replaceAll("radius fonte\">", "").replaceAll("</h2>", "")
-			 + "\nAutor = " + parametrosSaida.get(1).replaceAll("rel=\"author\">", "").replaceAll("</a>", "")
-			 + "\nData = " + parametrosSaida.get(2).replaceAll("no dia ", "").replaceAll("</li>", "")
-			 + "\nTexto = " + parametrosSaida.get(3).replaceAll("entry\">(.|\\s)+?<p>", "").replaceAll("</p>", "");
+		
+		this.link = pagina.getURL().toString();
+		this.titulo = parametrosSaida.get(0).replaceAll("radius fonte\">", "").replaceAll("</h2>", "");
+		this.autor = parametrosSaida.get(1).replaceAll("rel=\"author\">", "").replaceAll("</a>", "");
+		this.data = parametrosSaida.get(2).replaceAll("no dia ", "").replaceAll("</li>", "");
+		this.texto = parametrosSaida.get(3).replaceAll("entry\">(.|\\s)+?<p>", "").replaceAll("</p>", "");
+		
+		
+		String[] parametros = {this.link,this.titulo,this.autor,this.data,this.texto};
+		
+		Persistencia p = new Persistencia();
+		p.salvar(parametros);
+		
+		return "Link = " + this.link + "\nTitulo = " + this.titulo + "\nAutor = " + this.autor + "\nData = " + this.data + "\nTexto = " + this.texto;
 	}
 }

@@ -8,7 +8,7 @@ public class TelaResultado {
 	public void exibeResultado(String resultado) throws UnsupportedEncodingException{
 		
 		String texto = new String(resultado.getBytes(), "UTF-8");
-        JTextArea  msg = new JTextArea(texto);
+        JTextArea msg = new JTextArea(texto);
         msg.setLineWrap(true);
         msg.setWrapStyleWord(true);
 
