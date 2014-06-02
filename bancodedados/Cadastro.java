@@ -1,11 +1,7 @@
 package bancodedados;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-
 public class Cadastro {
 
 	public void cadastrarUsuario(String nome, String email) throws IOException {
