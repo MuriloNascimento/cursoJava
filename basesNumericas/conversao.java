@@ -12,7 +12,7 @@ public class conversao {
 		StringBuilder convertido = new StringBuilder();
 		
 		//Converte de binario para decimal
-		for(int i = 0; decimal > 0; i++){
+		for(; decimal > 0;){
 			temp = decimal % 2;
 			convertido.append(temp);
 			decimal /= 2;

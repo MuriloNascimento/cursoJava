@@ -5,9 +5,11 @@ import java.util.Scanner;
 
 public class CadastroUsuario {
 
+	private static Scanner s;
+
 	public static void main(String[] args) throws IOException {
 		
-		Scanner s = new Scanner(System.in);
+		s = new Scanner(System.in);
 		
 		System.out.println("Informe seu nome:");
 		String nomeInfo = s.nextLine();
